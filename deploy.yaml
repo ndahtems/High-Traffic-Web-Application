@@ -1,0 +1,19 @@
+- name: Deploy Web Application
+  hosts: web_servers
+  become: yes
+  tasks:
+    - name: Install Dependencies
+      apt:
+        name: ['nginx', 'git', 'php', 'php-mysql']
+        state: present
+        update_cache: yes
+
+    - name: Clone Web App Repository
+      git:
+        repo: 'https://github.com/my-org/high-traffic-web-app.git'
+        dest: /var/www/html/
+
+    - name: Restart Web Server
+      service:
+        name: nginx
+        state: restarted
