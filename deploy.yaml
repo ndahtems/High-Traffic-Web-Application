@@ -16,4 +16,4 @@
     - name: Restart Web Server
       service:
         name: nginx
-        state: restarted
+        state: restarted 

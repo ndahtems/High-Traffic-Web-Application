@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "eu-north-1"
 }
 
 # VPC
@@ -11,7 +11,7 @@ resource "aws_vpc" "web_vpc" {
 resource "aws_subnet" "public1" {
   vpc_id            = aws_vpc.web_vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = "en-north-1a"
 }
 
 # Security Group
