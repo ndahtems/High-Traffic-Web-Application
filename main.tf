@@ -21,7 +21,7 @@ resource "aws_security_group" "web_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-   ingress {
+  ingress {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
@@ -32,7 +32,7 @@ resource "aws_security_group" "web_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
-}
+  }
 }
 # Load Balancer
 resource "aws_lb" "web_alb" {
@@ -40,20 +40,20 @@ resource "aws_lb" "web_alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.web_sg.id]
-  subnets           = [aws_subnet.public1.id]
+  subnets            = [aws_subnet.public1.id]
 }
 
 # Auto Scaling Group
 resource "aws_autoscaling_group" "web_asg" {
-  min_size             = 2
-  max_size             = 10
-  desired_capacity     = 2
+  min_size            = 2
+  max_size            = 10
+  desired_capacity    = 2
   vpc_zone_identifier = [aws_subnet.public1.id]
 }
 
 # RDS Database
 resource "aws_db_instance" "web_db" {
-  allocated_storage    = 20
+  allocated_storage   = 20
   engine              = "mysql"
   instance_class      = "db.t3.medium"
   username            = "admin"
