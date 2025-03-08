@@ -44,19 +44,19 @@ resource "aws_lb" "web_alb" {
 }
 
 # Auto Scaling Group
-resource "aws_autoscaling_group" "web_asg" {
-  min_size            = 2
-  max_size            = 10
-  desired_capacity    = 2
-  vpc_zone_identifier = [aws_subnet.public1.id]
-}
+#resource "aws_autoscaling_group" "web_asg" {
+ # min_size            = 2
+  #max_size            = 10
+ # desired_capacity    = 2
+  #vpc_zone_identifier = [aws_subnet.public1.id]
+#}
 
 # RDS Database
-resource "aws_db_instance" "web_db" {
-  allocated_storage   = 20
-  engine              = "mysql"
-  instance_class      = "db.t3.medium"
-  username            = "admin"
-  password            = "securepassword"
-  skip_final_snapshot = true
-}
+#resource "aws_db_instance" "web_db" {
+  #allocated_storage   = 20
+ # engine              = "mysql"
+  #instance_class      = "db.t3.medium"
+  #username            = "admin"
+  #password            = "securepassword"
+  #skip_final_snapshot = true
+#}
